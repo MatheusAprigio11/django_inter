@@ -1,0 +1,24 @@
+{% load boostrap4 %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contato</title>
+    {% boostrap_css %}
+</head>
+<body>
+
+    <div class="container">
+        <h1>Contato</h1>
+        {% boostrap_messages %}
+
+        <form action="{% url 'contato' %}" method="post" class="form" autocomplete="off">  
+
+        </form>
+    </div>
+{% boostrap_javascript jquery='full' %}
+</body>
+</html>
+
+<!-- action - serve para quando o usuario clickar no botao, haver uma ação. -->
