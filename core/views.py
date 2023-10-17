@@ -1,5 +1,5 @@
 from django.shortcuts import render
-
+from django.contrib import messages
 from .forms import ContatoForm
 
 # Create your views here.
@@ -10,8 +10,15 @@ def index(request):
 
 
 def contato(request):
-    form = ContatoForm()
+    form = ContatoForm(request.POST or None)
 
+    if str(request.method) == "POST":
+        if form.is_valid():
+            form.send_mail()
+            messages.success(request, 'Email enviado com sucesso')
+            form = ContatoForm()
+        else:
+            messages.error(request, 'Erro ao enviar o email')
     context = {
         'form': form
     }
